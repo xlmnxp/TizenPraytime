@@ -38,6 +38,28 @@
 	</div>
 	<script type="text/javascript" src="lib/tau/wearable/js/tau.min.js"></script>
 	<!-- script src="js/app.js"></script -->
+	<script>
+	window.addEventListener("tizenhwkey", function (ev) {
+		var activePopup = null,
+		page = null,
+		pageid = "";
+		
+		if (ev.keyName === "back") {
+			activePopup = document.querySelector(".ui-popup-active");
+			page = document.getElementsByClassName("ui-page-active")[0];
+			pageid = page ? page.id : "";
+			
+			if (pageid === "main" && !activePopup) {
+				try {
+					tizen.application.getCurrentApplication().exit();
+				} catch (ignore) {
+				}
+			} else {
+				window.history.back();
+			}
+		}
+	});
+	</script>
 	<script src="js/lowBatteryCheck.js"></script>
 </body>
 </html>

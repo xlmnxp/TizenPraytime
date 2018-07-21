@@ -445,20 +445,33 @@
 		}
 	});
 	
+	if(localStorage.getItem('latitude') && localStorage.getItem('longitude') && localStorage.getItem('timezone')){
+		setPrayTime();		
+	}else{
+		getPrayTime();
+	}
+	
+	function setPrayTime(){
+		var times = prayTimes.getTimes(new Date(), [localStorage.getItem('latitude'), localStorage.getItem('longitude')], localStorage.getItem('timezone'));
+		for(var ind in list){
+			document.querySelector('#time-'+list[ind].toLowerCase()).innerHTML = times[list[ind].toLowerCase()];
+		}
+	}
+	
 	function getPrayTime(){
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(function(position){
-				alert("تم جلب اوقات الصلوات");
-				var times = prayTimes.getTimes(new Date(), [position.coords.latitude, position.coords.longitude], parseFloat(timeZones[tizen.time.getLocalTimezone()]));
-				for(var ind in list){
-					document.querySelector('#time-'+list[ind].toLowerCase()).innerHTML = times[list[ind].toLowerCase()];
-				}
+				localStorage.setItem('latitude', position.coords.latitude);
+				setItem('longitude', position.coords.longitude);
+				setItem('timezone', parseFloat(timeZones[tizen.time.getLocalTimezone()]));
+				setPrayTime();
+				
 			}, function(error){
 				var errorInfo = '';
 
 				switch (error.code) {
 					case error.PERMISSION_DENIED:
-						errorInfo = 'User denied the request for Geolocation.';
+						errorInfo = 'لقد قمت بتحديد "عدم السماح" لطلب تحديد الموقع الجغرافي.';
 						break;
 					case error.POSITION_UNAVAILABLE:
 						errorInfo = 'معلومات الموقع غير متوفرة.';
@@ -472,7 +485,7 @@
 				}
 
 				alert(errorInfo);
-			}, {maximumAge: 60000});
+			}, {maximumAge: 15000});
 	    } else {
 	        alert('Geolocation is not supported.');
 	    }
