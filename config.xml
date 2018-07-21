@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns:tizen="http://tizen.org/ns/widgets" xmlns="http://www.w3.org/ns/widgets" id="http://yourdomain/Pray" version="1.0.0" viewmodes="maximized">
+    <access origin="*" subdomains="true"></access>
+    <tizen:allow-navigation>*</tizen:allow-navigation>
+    <tizen:application id="nJa17CaKhS.ISPrayTime" package="nJa17CaKhS" required_version="2.3.2"/>
+    <author href="https://www.sy.sa" email="xlmnxp@outlook.sa">xlmnxp</author>
+    <content src="index.html"/>
+    <tizen:content-security-policy>*</tizen:content-security-policy>
+    <tizen:content-security-policy-report-only>*</tizen:content-security-policy-report-only>
+    <description>تطبيق مجاني ومفتوح المصدر لعرض اوقات الصلوات بإستخدام GPS</description>
+    <feature name="http://tizen.org/feature/screen.size.normal"/>
+    <icon src="icon.png"/>
+    <license href="https://opensource.org/licenses/MIT">MIT</license>
+    <name>الصلاة</name>
+    <tizen:privilege name="http://tizen.org/privilege/location"/>
+    <tizen:privilege name="http://tizen.org/privilege/application.launch"/>
+    <tizen:profile name="wearable"/>
+    <tizen:setting hwkey-event="enable"/>
+</widget>

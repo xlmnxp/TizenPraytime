@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html dir="rtl">
+	<head>
+		<meta name="viewport" content="width=device-width,user-scalable=no">
+		<title>وقت الصلاة</title>
+		<link rel="stylesheet" href="lib/tau/wearable/theme/default/tau.min.css">
+		<link rel="stylesheet" media="all and (-tizen-geometric-shape: circle)" href="lib/tau/wearable/theme/default/tau.circle.min.css">
+		<!-- load theme file for your application -->
+		<link rel="stylesheet" href="css/style.css">
+	</head>
+	<body>
+		<div class="ui-page ui-page-active" id="main">
+			<header class="ui-header">
+				<h2 class="ui-title">الصلوات</h2>
+			</header>
+			<div class="ui-content">
+					<progress class="ui-circle-progress" id="circleprogress" max="20" value="2"></progress>
+					<ul class="ui-listview">
+					<li>
+					<a href="pray.html?time=fajr">
+						<a id="time-fajr"> … </a>
+						<p class="salah-name">صلاة الفجر</p>
+					</a>
+				</li>
+				<li>
+					<a href="pray.html?time=dhuhr">
+						<a id="time-dhuhr"> … </a>
+						<p class="salah-name">صلاة الظهر</p>
+					</a>
+				</li>
+				<li>
+					<a href="pray.html?time=asr">
+						<a id="time-asr"> … </a>
+						<p class="salah-name">صلاة العصر</p>
+					</a>
+				</li>
+				<li>
+					<a href="pray.html?time=maghrib">
+						<a id="time-maghrib"> … </a>
+						<p class="salah-name">صلاة المغرب</p>
+					</a>
+				</li>
+				<li>
+					<a href="pray.html?time=isha">
+						<a id="time-isha"> … </a>
+						<p class="salah-name">صلاة العشاء</p>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<script type="text/javascript" src="lib/tau/wearable/js/tau.min.js"></script>
+	<script src="js/prayTime.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/circle-helper.js"></script>
+	<script src="js/lowBatteryCheck.js"></script>
+</body>
+</html>

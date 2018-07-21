@@ -1,0 +1,32 @@
+* {
+    font-family: Verdana, Lucida Sans, Arial, Helvetica, sans-serif;
+}
+
+body {
+    margin: 0px auto;
+    background-color:#222;
+}
+
+.salah-name{
+	height: auto;
+	font-size: 0.7em;
+	color: rgba(255, 255, 255, 0.8);
+	margin: 0;
+	padding: 0;
+}
+
+.ui-listview li input[type="checkbox"]:not(.ui-switch-input), 
+.ui-listview li input[type="radio"]
+{
+   position: absolute;
+   right: 30px;
+   top: 0px;
+   margin-top: 15px;
+}
+.ui-listview li.li-has-checkbox label, 
+.ui-listview li.li-has-radio label
+{
+   display: block;
+   padding: 31.5px 94px 31.5px 40px;
+   margin: -30px -8px -21px -38px;
+}
