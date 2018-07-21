@@ -445,12 +445,6 @@
 		}
 	});
 	
-	if(localStorage.getItem('latitude') && localStorage.getItem('longitude') && localStorage.getItem('timezone')){
-		setPrayTime();		
-	}else{
-		getPrayTime();
-	}
-	
 	function setPrayTime(){
 		var times = prayTimes.getTimes(new Date(), [localStorage.getItem('latitude'), localStorage.getItem('longitude')], localStorage.getItem('timezone'));
 		for(var ind in list){
@@ -461,9 +455,10 @@
 	function getPrayTime(){
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(function(position){
+				alert('تم جلب الموقع والنطاق الزمني')
 				localStorage.setItem('latitude', position.coords.latitude);
-				setItem('longitude', position.coords.longitude);
-				setItem('timezone', parseFloat(timeZones[tizen.time.getLocalTimezone()]));
+				localStorage.setItem('longitude', position.coords.longitude);
+				localStorage.setItem('timezone', parseFloat(timeZones[tizen.time.getLocalTimezone()]));
 				setPrayTime();
 				
 			}, function(error){
@@ -489,5 +484,12 @@
 	    } else {
 	        alert('Geolocation is not supported.');
 	    }
+	}
+
+	if(localStorage.getItem('latitude') != undefined && localStorage.getItem('longitude') != undefined && localStorage.getItem('timezone') != undefined){
+		setPrayTime();		
+	}else{
+		alert('جاري جلب الموقع والنطاق الزمني')
+		getPrayTime();
 	}
 }());
